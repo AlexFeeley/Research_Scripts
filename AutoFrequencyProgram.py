@@ -14,7 +14,7 @@ from datetime import datetime
 parser = argparse.ArgumentParser()
 
 # defaults
-port = "/dev/ttyUSB0"
+port = "/dev/tty.usbserial-FT1JI466"
 baud = 9600 #57600
 channel = 1
 length = 1000

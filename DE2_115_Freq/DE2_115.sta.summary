@@ -1,0 +1,77 @@
+------------------------------------------------------------
+TimeQuest Timing Analyzer Summary
+------------------------------------------------------------
+
+Type  : Slow 1200mV 85C Model Setup 'CLOCK_50'
+Slack : -5.491
+TNS   : -7088.013
+
+Type  : Slow 1200mV 85C Model Setup 'lsb_main:lsb_main_test|ClockDown:uslow|sys_clk'
+Slack : -4.063
+TNS   : -307.044
+
+Type  : Slow 1200mV 85C Model Hold 'lsb_main:lsb_main_test|ClockDown:uslow|sys_clk'
+Slack : 0.157
+TNS   : 0.000
+
+Type  : Slow 1200mV 85C Model Hold 'CLOCK_50'
+Slack : 0.401
+TNS   : 0.000
+
+Type  : Slow 1200mV 85C Model Minimum Pulse Width 'CLOCK_50'
+Slack : -3.000
+TNS   : -2327.565
+
+Type  : Slow 1200mV 85C Model Minimum Pulse Width 'lsb_main:lsb_main_test|ClockDown:uslow|sys_clk'
+Slack : -1.285
+TNS   : -133.640
+
+Type  : Slow 1200mV 0C Model Setup 'CLOCK_50'
+Slack : -4.980
+TNS   : -6358.907
+
+Type  : Slow 1200mV 0C Model Setup 'lsb_main:lsb_main_test|ClockDown:uslow|sys_clk'
+Slack : -3.641
+TNS   : -271.695
+
+Type  : Slow 1200mV 0C Model Hold 'lsb_main:lsb_main_test|ClockDown:uslow|sys_clk'
+Slack : 0.112
+TNS   : 0.000
+
+Type  : Slow 1200mV 0C Model Hold 'CLOCK_50'
+Slack : 0.353
+TNS   : 0.000
+
+Type  : Slow 1200mV 0C Model Minimum Pulse Width 'CLOCK_50'
+Slack : -3.000
+TNS   : -2327.565
+
+Type  : Slow 1200mV 0C Model Minimum Pulse Width 'lsb_main:lsb_main_test|ClockDown:uslow|sys_clk'
+Slack : -1.285
+TNS   : -133.640
+
+Type  : Fast 1200mV 0C Model Setup 'CLOCK_50'
+Slack : -2.356
+TNS   : -2737.415
+
+Type  : Fast 1200mV 0C Model Setup 'lsb_main:lsb_main_test|ClockDown:uslow|sys_clk'
+Slack : -1.426
+TNS   : -97.115
+
+Type  : Fast 1200mV 0C Model Hold 'lsb_main:lsb_main_test|ClockDown:uslow|sys_clk'
+Slack : -0.033
+TNS   : -0.092
+
+Type  : Fast 1200mV 0C Model Hold 'CLOCK_50'
+Slack : 0.180
+TNS   : 0.000
+
+Type  : Fast 1200mV 0C Model Minimum Pulse Width 'CLOCK_50'
+Slack : -3.000
+TNS   : -2389.620
+
+Type  : Fast 1200mV 0C Model Minimum Pulse Width 'lsb_main:lsb_main_test|ClockDown:uslow|sys_clk'
+Slack : -1.000
+TNS   : -104.000
+
+------------------------------------------------------------
