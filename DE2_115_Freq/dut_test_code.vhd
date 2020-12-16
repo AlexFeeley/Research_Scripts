@@ -19,13 +19,6 @@ use ieee.numeric_std.all;
 --USE IEEE.NUMERIC_BIT.ALL;
 
 entity dut_test_code is
---	generic
---	(
---		<name>	: <type>  :=	<default_value>;
---		...
---		<name>	: <type>  :=	<default_value>
---	);
-
 
 	port
 	(
@@ -46,9 +39,11 @@ entity dut_test_code is
 		fpga_clk_out_1 : out std_logic;
 		fpga_clk_out_2 : out std_logic;
 		pll_sezro : out std_logic;
-		pll_sezro_constant : in std_logic;
+		
+		pll_sezro_constant : in std_logic; -- Select0RO
+		pll_seoro_constant: in std_logic; -- Select1RO
+		
 		pll_seoro : out std_logic;
-		pll_seoro_constant: in std_logic;
 		pll_sezDB : out std_logic;
 		pll_sezDB_constant : in std_logic;
 		pll_seoDB : out std_logic;
@@ -172,13 +167,6 @@ entity dut_test_code is
 		pll_os2_in :in std_logic;
 		pll_os1_in :in std_logic;
 		pll_os0_in :in std_logic;
-		--pll_ps4_in :in std_logic;
-		--pll_ps3_in :in std_logic;
-		--pll_ps2_in :in std_logic;
-		--pll_ps1_in :in std_logic;
-		--pll_ps0_in :in std_logic;
-		--pll_rs1_in :in std_logic;
-		--pll_rs0_in :in std_logic;
 
 		pll_fbs2_out :out std_logic;
 		pll_fbs1_out :out std_logic;
@@ -186,14 +174,7 @@ entity dut_test_code is
 		pll_os2_out :out std_logic;
 		pll_os1_out :out std_logic;
 		pll_os0_out :out std_logic;
-		--pll_ps4_out :out std_logic;
-		--pll_ps3_out :out std_logic;
-		--pll_ps2_out :out std_logic;
-		--pll_ps1_out :out std_logic;
-		--pll_ps0_out :out std_logic;
-		--pll_rs1_out :out std_logic;
-		--pll_rs0_out :out std_logic;
-
+		
 data_out1	: in std_logic;
 data_out2	: in std_logic;
 data_out3	: in std_logic;
@@ -503,41 +484,51 @@ data_lsb_out29 <= data_out29	;
 
 
 --data setup
-select_data_blue: ledb <=
-	--not data(8 downto 1) when dip_sw="100" else
-	--not clk(8 downto 1) when dip_sw="010" else
-	--not sr(8 downto 1) when dip_sw="001" else
-	"11111111";
-
-select_data_green: ledg <=
-	--not data(16 downto 9) when dip_sw="100" else
-	--not clk(16 downto 9) when dip_sw="010" else
-	--not sr(16 downto 9) when dip_sw="001" else
-	"00000000";
-
-select_data_red: ledr(4 downto 0) <=
-	--not data(21 downto 17) when dip_sw="100" else
-	--not clk(21 downto 17) when dip_sw="010" else
-	--not sr(21 downto 17) when dip_sw="001" else
-	"00000";
+select_data_blue: ledb <= "11111111";
+select_data_green: ledg <= "00000000";
+select_data_red: ledr(4 downto 0) <= "00000";
 
 --set leds
 ledr(5) <= not setqsrff;
 ledr(6) <= not setdata;
 
-
-pll_sezro <= pll_sezro_constant;
-pll_seoro <= pll_seoro_constant;
+-- Frequency of RO Setting
+process (OSC_50)
+variable counter : integer:= 0; -- Counter is equal to 0
+begin
+	if counter > 800000000 then
+		counter := 0; 
+	elsif rising_edge(OSC_50) then
+		counter := counter + 1; 
+	end if; 
+	
+	if counter < 200000000 then
+		-- 00
+		pll_sezro <= '0';
+		pll_seoro <= '0';
+	elsif counter < 400000000 then
+		-- 01
+		pll_sezro <= '0';
+		pll_seoro <= '1';
+	elsif counter < 600000000 then
+		-- 11
+		pll_sezro <= '1';
+		pll_seoro <= '1';
+	else
+		-- 10
+		pll_sezro <= '1';
+		pll_seoro <= '0';
+	end if; 
+end process;
+-- RO Changes Based on Switch Inputs
+-- pll_sezro <= '0'; -- Select 0RO,  pll_sezro_constant
+-- pll_seoro <= '0'; -- Select 1RO, pll_seoro_constant
 
 pll_sezDB <= pll_sezDB_constant;
 pll_seoDB <= pll_seoDB_constant;
 
 --ext data select
-ext_data_to_dut <=
-	--data1010 when ext_data_select=not "0010" else
-	--data1100 when ext_data_select=not "0100" else
-	--data1k when ext_data_select=not "1000" else
-	ext_data_constant; --INITIALLY NELSON had it as "not ext_data_constant";
+ext_data_to_dut <= ext_data_constant; --INITIALLY NELSON had it as "not ext_data_constant";
 
 ext_data_to_dutpattern <= ext_datapattern_constant;
 
@@ -624,58 +615,6 @@ pll_os0_out <= pll_os0_in;
 --show fpga_clock_out on hex0 decmial point
 hex0dp <= not fpga_clk_prev;
 
---clk generation proces
---process (sys_clk, button, reset) is
---	variable count : integer;
---begin
---
---	if rising_edge(sys_clk) and reset='0' then
---		button_press <= '0';
---		count := 0;
---		fpga_clk_out <= '0';
---		fpga_clk_prev <='0';
---	elsif rising_edge(sys_clk) and button(1)='0' and button_press = '0' then --single clock button pressed
---		button_press <= '1';
---		fpga_clk_out <= '1'; --send one clock egde out
---		fpga_clk_prev <='1';
---	elsif rising_edge(sys_clk) and button(1)='1' and button_press = '1' and button(2)='1' and button(3)='1' then --single clock button depressed
---		button_press <= '0';
---		fpga_clk_out <= '0'; --return clock to 0
---		fpga_clk_prev <='0';
---	elsif rising_edge(sys_clk) and button(2)='0' and button_press = '0' and count = 0 then
---		--clock 1k cycles
---		count := 2046;
---		fpga_clk_out <= '1';
---		fpga_clk_prev <='1';
---		button_press <= '1';
---	elsif rising_edge(sys_clk) and button(2)='1' and button_press = '1' and count = 0 and button(1)='1' and button(3)='1'then
---		button_press <= '0';
---		fpga_clk_out <= '0';
---		fpga_clk_prev <='0';
---	elsif rising_edge(sys_clk) and button(3)='0' and button_press = '0' and count = 0 then
---		count := 8184;
---		fpga_clk_out <= '1';
---		fpga_clk_prev <='1';
---		button_press <= '1';
---	elsif rising_edge(sys_clk) and button(3)='1' and button_press = '1' and count = 0 and button(1)='1' and button(2)='1' then
---		button_press <= '0';
---		fpga_clk_out <= '0';
---		fpga_clk_prev <='0';
---	elsif rising_edge(sys_clk) and count > 0 and button(1) = '1' then
---		fpga_clk_out <= not fpga_clk_prev;
---		fpga_clk_prev <= not fpga_clk_prev;
---		count := count - 1;
---	elsif rising_edge(sys_clk) and count <= 0 and button_press = '0' and button(1) = '1' and button(2) ='1' and button(3) = '1' then
---		fpga_clk_out <= '0';
---		fpga_clk_prev <= '0';
---		count := 0;
-----	else
-----		fpga_clk_out <= '0';
-----		fpga_clk_prev <='0';
---end if;
-
---end process;
-
 --data output process
 --keeps track of fpga clk and outputs data according to pattern type
 process (fpga_clk_prev, reset)
@@ -712,19 +651,5 @@ begin
 		end if;
 	end if;
 end process;
-
---cycle_inputs: process(button(3),reset, button(2)) is
---begin
---if reset='1' then
---	outReg <= "000000000000000000001";
---elsif button(3)= '1' then
---	outReg <= outReg(20 downto 1) & outReg(21);
---elsif button(2)= '1' then
---	outReg <= "111111111111111111111";
---elsif button(2)='1' then
---	outReg <= "000000000000000000001";
---end if;
---
---end process; --end cycle_inputs
 
 end behave;

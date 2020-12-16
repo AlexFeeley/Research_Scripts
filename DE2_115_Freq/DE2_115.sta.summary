@@ -1,74 +1,98 @@
 ------------------------------------------------------------
-TimeQuest Timing Analyzer Summary
+Timing Analyzer Summary
 ------------------------------------------------------------
 
 Type  : Slow 1200mV 85C Model Setup 'CLOCK_50'
-Slack : -5.491
-TNS   : -7088.013
+Slack : -5.046
+TNS   : -1732.676
 
 Type  : Slow 1200mV 85C Model Setup 'lsb_main:lsb_main_test|ClockDown:uslow|sys_clk'
-Slack : -4.063
-TNS   : -307.044
-
-Type  : Slow 1200mV 85C Model Hold 'lsb_main:lsb_main_test|ClockDown:uslow|sys_clk'
-Slack : 0.157
-TNS   : 0.000
+Slack : -4.186
+TNS   : -312.260
 
 Type  : Slow 1200mV 85C Model Hold 'CLOCK_50'
-Slack : 0.401
+Slack : 0.386
+TNS   : 0.000
+
+Type  : Slow 1200mV 85C Model Hold 'lsb_main:lsb_main_test|ClockDown:uslow|sys_clk'
+Slack : 0.404
+TNS   : 0.000
+
+Type  : Slow 1200mV 85C Model Recovery 'CLOCK_50'
+Slack : -3.598
+TNS   : -105.966
+
+Type  : Slow 1200mV 85C Model Removal 'CLOCK_50'
+Slack : 2.526
 TNS   : 0.000
 
 Type  : Slow 1200mV 85C Model Minimum Pulse Width 'CLOCK_50'
 Slack : -3.000
-TNS   : -2327.565
+TNS   : -896.567
 
 Type  : Slow 1200mV 85C Model Minimum Pulse Width 'lsb_main:lsb_main_test|ClockDown:uslow|sys_clk'
 Slack : -1.285
 TNS   : -133.640
 
 Type  : Slow 1200mV 0C Model Setup 'CLOCK_50'
-Slack : -4.980
-TNS   : -6358.907
+Slack : -4.481
+TNS   : -1520.048
 
 Type  : Slow 1200mV 0C Model Setup 'lsb_main:lsb_main_test|ClockDown:uslow|sys_clk'
-Slack : -3.641
-TNS   : -271.695
-
-Type  : Slow 1200mV 0C Model Hold 'lsb_main:lsb_main_test|ClockDown:uslow|sys_clk'
-Slack : 0.112
-TNS   : 0.000
+Slack : -3.738
+TNS   : -275.471
 
 Type  : Slow 1200mV 0C Model Hold 'CLOCK_50'
+Slack : 0.340
+TNS   : 0.000
+
+Type  : Slow 1200mV 0C Model Hold 'lsb_main:lsb_main_test|ClockDown:uslow|sys_clk'
 Slack : 0.353
+TNS   : 0.000
+
+Type  : Slow 1200mV 0C Model Recovery 'CLOCK_50'
+Slack : -3.176
+TNS   : -92.836
+
+Type  : Slow 1200mV 0C Model Removal 'CLOCK_50'
+Slack : 2.304
 TNS   : 0.000
 
 Type  : Slow 1200mV 0C Model Minimum Pulse Width 'CLOCK_50'
 Slack : -3.000
-TNS   : -2327.565
+TNS   : -896.391
 
 Type  : Slow 1200mV 0C Model Minimum Pulse Width 'lsb_main:lsb_main_test|ClockDown:uslow|sys_clk'
 Slack : -1.285
 TNS   : -133.640
 
 Type  : Fast 1200mV 0C Model Setup 'CLOCK_50'
-Slack : -2.356
-TNS   : -2737.415
+Slack : -2.026
+TNS   : -495.002
 
 Type  : Fast 1200mV 0C Model Setup 'lsb_main:lsb_main_test|ClockDown:uslow|sys_clk'
-Slack : -1.426
-TNS   : -97.115
-
-Type  : Fast 1200mV 0C Model Hold 'lsb_main:lsb_main_test|ClockDown:uslow|sys_clk'
-Slack : -0.033
-TNS   : -0.092
+Slack : -1.485
+TNS   : -99.480
 
 Type  : Fast 1200mV 0C Model Hold 'CLOCK_50'
-Slack : 0.180
+Slack : 0.174
+TNS   : 0.000
+
+Type  : Fast 1200mV 0C Model Hold 'lsb_main:lsb_main_test|ClockDown:uslow|sys_clk'
+Slack : 0.181
+TNS   : 0.000
+
+Type  : Fast 1200mV 0C Model Recovery 'CLOCK_50'
+Slack : -1.292
+TNS   : -36.556
+
+Type  : Fast 1200mV 0C Model Removal 'CLOCK_50'
+Slack : 1.232
 TNS   : 0.000
 
 Type  : Fast 1200mV 0C Model Minimum Pulse Width 'CLOCK_50'
 Slack : -3.000
-TNS   : -2389.620
+TNS   : -900.109
 
 Type  : Fast 1200mV 0C Model Minimum Pulse Width 'lsb_main:lsb_main_test|ClockDown:uslow|sys_clk'
 Slack : -1.000

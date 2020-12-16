@@ -136,32 +136,25 @@ wire sr1;
 assign  HSMC_TX_D_N[1] = data_in;
 
 
-
 //=======================================================
 //  Structural coding
 //=======================================================
 
 dut_test_code inst_dut_test //dut_test_code maps pins from the fpga to the DUT
 (
-//.dip_sw(SW[3:1]), //these switches determine which outputs show on the LEDs
 .button(KEY[0]), //only use button 0 for reset
-//.ledb(LEDG),
-//.ledr(LEDR),
-//.ledg(LEDG),
 
 .fpga_clk_out(HSMC_RX_D_P[0]),   //Counter clock
 .fpga_clk_out_1(HSMC_TX_D_N[2]),  //CREST counter clock in
-//.fpga_clk_out_2(GPIO[21]), // PLL FIN
 
-
-.pll_en_in(SW[1]),
+.pll_en_in(SW[1]), // RO Enable
 .pll_en_out(HSMC_TX_D_P[2]),  //RO enable
 
 .pll_sezro(HSMC_TX_D_P[1]),   // Select00RO
-.pll_sezro_constant(SW[2]),
+.pll_sezro_constant(), // SW[2]
 
 .pll_seoro(HSMC_TX_D_P[0]),   // Select01RO
-.pll_seoro_constant(SW[3]),
+.pll_seoro_constant(), // SW[3]
 
 .pll_sezDB(HSMC_TX_D_N[11]),
 .pll_sezDB_constant(SW[4]),

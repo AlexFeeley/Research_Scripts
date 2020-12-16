@@ -1,0 +1,185 @@
+{
+	"partitions" : [
+		{
+			"name" : "Top",
+			"pins" : [
+				{
+					"name" : "UART_TXD",
+					"strict" : false
+				},
+				{
+					"name" : "HSMC_CLKOUT_N2",
+					"strict" : false
+				},
+				{
+					"name" : "HSMC_CLKOUT_P2",
+					"strict" : false
+				},
+				{
+					"name" : "HSMC_RX_D_N[9]",
+					"strict" : false
+				},
+				{
+					"name" : "HSMC_RX_D_N[10]",
+					"strict" : false
+				},
+				{
+					"name" : "HSMC_RX_D_N[11]",
+					"strict" : false
+				},
+				{
+					"name" : "HSMC_RX_D_N[12]",
+					"strict" : false
+				},
+				{
+					"name" : "HSMC_RX_D_N[13]",
+					"strict" : false
+				},
+				{
+					"name" : "HSMC_RX_D_N[14]",
+					"strict" : false
+				},
+				{
+					"name" : "HSMC_RX_D_N[15]",
+					"strict" : false
+				},
+				{
+					"name" : "HSMC_RX_D_N[16]",
+					"strict" : false
+				},
+				{
+					"name" : "HSMC_RX_D_P[0]",
+					"strict" : false
+				},
+				{
+					"name" : "HSMC_RX_D_P[11]",
+					"strict" : false
+				},
+				{
+					"name" : "HSMC_RX_D_P[12]",
+					"strict" : false
+				},
+				{
+					"name" : "HSMC_RX_D_P[13]",
+					"strict" : false
+				},
+				{
+					"name" : "HSMC_RX_D_P[14]",
+					"strict" : false
+				},
+				{
+					"name" : "HSMC_RX_D_P[15]",
+					"strict" : false
+				},
+				{
+					"name" : "HSMC_RX_D_P[16]",
+					"strict" : false
+				},
+				{
+					"name" : "HSMC_TX_D_N[0]",
+					"strict" : false
+				},
+				{
+					"name" : "HSMC_TX_D_N[1]",
+					"strict" : false
+				},
+				{
+					"name" : "HSMC_TX_D_N[2]",
+					"strict" : false
+				},
+				{
+					"name" : "HSMC_TX_D_N[11]",
+					"strict" : false
+				},
+				{
+					"name" : "HSMC_TX_D_N[12]",
+					"strict" : false
+				},
+				{
+					"name" : "HSMC_TX_D_N[13]",
+					"strict" : false
+				},
+				{
+					"name" : "HSMC_TX_D_N[14]",
+					"strict" : false
+				},
+				{
+					"name" : "HSMC_TX_D_N[15]",
+					"strict" : false
+				},
+				{
+					"name" : "HSMC_TX_D_N[16]",
+					"strict" : false
+				},
+				{
+					"name" : "HSMC_TX_D_P[0]",
+					"strict" : false
+				},
+				{
+					"name" : "HSMC_TX_D_P[1]",
+					"strict" : false
+				},
+				{
+					"name" : "HSMC_TX_D_P[2]",
+					"strict" : false
+				},
+				{
+					"name" : "HSMC_TX_D_P[12]",
+					"strict" : false
+				},
+				{
+					"name" : "HSMC_TX_D_P[13]",
+					"strict" : false
+				},
+				{
+					"name" : "HSMC_TX_D_P[14]",
+					"strict" : false
+				},
+				{
+					"name" : "HSMC_TX_D_P[15]",
+					"strict" : false
+				},
+				{
+					"name" : "HSMC_TX_D_P[16]",
+					"strict" : false
+				},
+				{
+					"name" : "KEY[0]",
+					"strict" : false
+				},
+				{
+					"name" : "CLOCK_50",
+					"strict" : false
+				},
+				{
+					"name" : "SW[5]",
+					"strict" : false
+				},
+				{
+					"name" : "SW[7]",
+					"strict" : false
+				},
+				{
+					"name" : "SW[6]",
+					"strict" : false
+				},
+				{
+					"name" : "SW[4]",
+					"strict" : false
+				},
+				{
+					"name" : "SW[1]",
+					"strict" : false
+				},
+				{
+					"name" : "HSMC_CLKIN_N2",
+					"strict" : false
+				},
+				{
+					"name" : "HSMC_CLKIN_P2",
+					"strict" : false
+				}
+			]
+		}
+	]
+}

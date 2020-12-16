@@ -1,0 +1,24 @@
+
+State Machine - |DE2_115|lsb_main:lsb_main_test|u_rec:uurx|state
+Name state.r_STOP state.r_SAMPLE state.r_WAIT state.r_CENTER state.r_START 
+state.r_START 0 0 0 0 0 
+state.r_CENTER 0 0 0 1 1 
+state.r_WAIT 0 0 1 0 1 
+state.r_SAMPLE 0 1 0 0 1 
+state.r_STOP 1 0 0 0 1 
+
+State Machine - |DE2_115|lsb_main:lsb_main_test|u_xmit:uutx|state
+Name state.x_STOP state.x_SHIFT state.x_WAIT state.x_START state.x_IDLE 
+state.x_IDLE 0 0 0 0 0 
+state.x_START 0 0 0 1 1 
+state.x_WAIT 0 0 1 0 1 
+state.x_SHIFT 0 1 0 0 1 
+state.x_STOP 1 0 0 0 1 
+
+State Machine - |DE2_115|lsb_main:lsb_main_test|main_controller:main_controller1|state
+Name state.waiting state.xmitting state.transfer state.encoding state.ready 
+state.ready 0 0 0 0 0 
+state.encoding 0 0 0 1 1 
+state.transfer 0 0 1 0 1 
+state.xmitting 0 1 0 0 1 
+state.waiting 1 0 0 0 1 
