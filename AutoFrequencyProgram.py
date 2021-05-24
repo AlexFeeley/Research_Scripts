@@ -14,11 +14,12 @@ from datetime import datetime
 parser = argparse.ArgumentParser()
 
 # defaults
-port = "/dev/tty.usbserial-FT1JI466"
+# port = "/dev/tty.usbserial-FT1JI466"
+port = 'COM3'
 baud = 9600 #57600
 channel = 1
 length = 1000
-interval = 10
+interval = 2
 
 # Add arguments
 parser.add_argument("--port", "-p", help="set serial port (default %s)" % port)
@@ -80,7 +81,7 @@ ser.flush()
 freq = float(ser.readline())
 
 # Success! 
-print("It worked!: Freq = %.4", freq)
+print("It worked!: Freq = %", freq)
 
 # Flush it for fun
 ser.flush()
@@ -88,7 +89,7 @@ ser.flush()
 # No error checking here so dont enter strings
 duration = int(input("Enter the desired data collection duration in minutes (int pls.): "))
 seconds = duration * 60
-times = int(seconds / interval) # measure every 10 seconds
+times = int(seconds / interval) # measure every 2 seconds
 
 # Open the output file as csv
 filename = input("Output Filename (w/o file extension): ")
