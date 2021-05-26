@@ -13,60 +13,63 @@ interval = 0.4
 instr =  vxi11.Instrument("TCPIP::169.254.178.72::INSTR")
 print(instr.ask("*IDN?"))
 
-instr.write(":WAVeform:SOURce CHANnel1\n") 
 
 # Reset o-scope
-instr.write("*RST\n") 
+# instr.write("*RST\n") 
 
 # Autoset 
-instr.write(":AUT\n") 
+instr.write("AUTOSET EXECUTE\n") 
+time.sleep(0)
 
 # Measure freq
+instr.write("MEASUREMENT:IMMED:TYPE FREQUENCY\n") 
 
-freq = float(instr.ask(":MEAS:FREQ? CHAN1\n"))
+freq = str(instr.ask("MEASUREMENT:IMMED:VALUE?\n"))
 
 # Success! 
 print("It worked!: Freq = %", freq)
 
 
-# # No error checking here so dont enter strings
-# duration = int(input("Enter the desired data collection duration in minutes (int pls.): "))
-# seconds = duration * 60
-# times = int(seconds / interval) # measure every 2 seconds
+# No error checking here so dont enter strings
+duration = int(input("Enter the desired data collection duration in minutes (int pls.): "))
+seconds = duration * 60
+times = int(seconds / interval) # measure every 2 seconds
 
-# # Open the output file as csv
-# filename = input("Output Filename (w/o file extension): ")
-# with open(filename + ".csv", 'w') as f:
+# Open the output file as csv
+filename = input("Output Filename (w/o file extension): ")
+with open(filename + ".csv", 'w') as f:
 
-#     # Let's now try get the data! (may be a bit offest from desired times depending on execution times for serial ops)
-#     for i in range(times):
+    # Let's now try get the data! (may be a bit offest from desired times depending on execution times for serial ops)
+    for i in range(times):
 
-#         # Autoset the o-scope
-#         instr.write(b':AUT\n')
+        # Autoset the o-scope
+        instr.write(b':AUT\n')
 
-#         # Read the frequency
-#         instr.write(b':MEAS:FREQ? CHAN1\n') 
-#         freq = float(instr.readline())
+        # Read the frequency
+        # Measure freq
+        instr.write("MEASUREMENT:IMMED:TYPE FREQUENCY\n") 
 
-#         # Get current time
-#         currTime = str(datetime.now().strftime("%d/%m/%Y %H:%M:%S"))
+        freq = str(instr.ask("MEASUREMENT:IMMED:VALUE?\n"))
 
-#         # Write the frequency to an output file .cvs
-#         writeString = str(currTime + ","+ str(freq)+ "\n")
-#         f.write(writeString)
+        # Get current time
+        currTime = str(datetime.now().strftime("%d/%m/%Y %H:%M:%S"))
 
-#         # Print result to console
-#         result = str(currTime + " " + str(freq))
-#         print(result)
+        # # Write the frequency to an output file .cvs
+        # writeString = str(currTime + ","+ str(freq)+ "\n")
+        # f.write(writeString)
 
-#         # Sleep for interval seconds
-#         time.sleep(interval) 
+        # Print result to console
+        result = str(currTime + " " + str(freq))
+        print(result)
 
-# # Close the port
-# instr.close() 
+        # Sleep for interval seconds
+        time.sleep(interval) 
 
-# # Add functionality to plot the results later
-# input("Done! Press Enter to Exit")
+# Close the port
+instr.close() 
+
+# Add functionality to plot the results later
+input("Done! Press Enter to Exit")
 
 
 
